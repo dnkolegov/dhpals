@@ -9,7 +9,7 @@ import (
 
 var (
 	// A  - the a parameter.
-	A    = big.NewInt(534)
+	A = big.NewInt(534)
 	// N - the order of the base point.
 	N, _ = new(big.Int).SetString("233970423115425145498902418297807005944", 10)
 	// P - the order of the underlying field.
@@ -17,7 +17,7 @@ var (
 	// Q - the order of the subgroup.
 	Q, _ = new(big.Int).SetString("29246302889428143187362802287225875743", 10)
 	// U - the base point coordinate.
-	U    = big.NewInt(4)
+	U = big.NewInt(4)
 	// V - the base point coordinate.
 	V, _ = new(big.Int).SetString("85518893674295321206118380980485522083", 10)
 	zero = big.NewInt(0)

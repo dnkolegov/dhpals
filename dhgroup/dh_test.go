@@ -37,4 +37,3 @@ func TestDH(t *testing.T) {
 		}
 	}
 }
-

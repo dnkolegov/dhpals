@@ -1,0 +1,7 @@
+github.com/ghhenry/intfact v0.0.0-20190408113529-aad2f2e92785 h1:mROG4yxcM/kEGcmYmfwTPjNGGsMjBxpB7uJLX3jvgrM=
+github.com/ghhenry/intfact v0.0.0-20190408113529-aad2f2e92785/go.mod h1:iez3ujlTTBq25BYtV37wlObd4ykrWsS67EtZZT7MeDY=
+github.com/ghhenry/intsqrt v0.0.0-20190316182902-24a2ebe55a5b h1:4E6hT/0hUMK8eGziBngROTQO0rt5UIUSnkCQ7GbHKEE=
+github.com/ghhenry/intsqrt v0.0.0-20190316182902-24a2ebe55a5b/go.mod h1:/WsuPZ6cUecCq+WS3ebKtGcuaY6AUcQZ18JIe8EvUS8=
+github.com/ghhenry/primes v0.0.0-20190317151143-c8cb6e1934b6 h1:6imcRWU1MCtzRrt2VmqEkQIBareMXieIk98NBSU8Hvc=
+github.com/ghhenry/primes v0.0.0-20190317151143-c8cb6e1934b6/go.mod h1:F1Py7/b5svstampT0ag0SUUWfzvAgSdzzMIVJDea1Gc=
+github.com/soniakeys/integer v1.0.0/go.mod h1:Un1sOTfmXGrWDb2oS2IQDCK6J3oCdpAtB2BKtqtwawA=
