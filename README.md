@@ -139,3 +139,4 @@ go test -run TestKCIAttack
 
 ## References
 1. [J.M. Pollard. Monte Carlo Methods for Index Computation](https://www.ams.org/journals/mcom/1978-32-143/S0025-5718-1978-0491431-9/S0025-5718-1978-0491431-9.pdf)
+2. [Nigel Smart. Introduction to ECC](https://cyber.biu.ac.il/wp-content/uploads/2017/01/NigelSmart-BIU2013-2-3.pdf)
