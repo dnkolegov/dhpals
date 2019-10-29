@@ -109,51 +109,35 @@ func bsgs(g, y, p *big.Int) (*big.Int, error) {
 
 // basicPohligHellman implements the basic Pohlig-Hellman algorithm on groups of prime order.
 func basicPohligHellman(g, y, n, p, pf, ef *big.Int) *big.Int {
-	fmt.Printf("Run BPH: %d %d %d %d %d %d\n", g, y, n, p, pf, ef)
 	gamma := new(big.Int).SetInt64(1)
 	l := new(big.Int).SetInt64(0)
 	q := new(big.Int).Set(pf)
 
 	a1 := new(big.Int).Exp(g, new(big.Int).Div(n, q), p)
-	fmt.Printf("a^=%d\n", a1)
 
 	x := new(big.Int).SetInt64(0)
 	for j := new(big.Int).Set(Big0); j.Cmp(ef) < 0; j.Add(j, Big1) {
-		fmt.Println("----------")
 
 		aPower := new(big.Int).Mul(l, new(big.Int).Exp(q, new(big.Int).Sub(j, Big1), nil))
-		fmt.Printf("aPower=%d\n", aPower)
 
 		a := new(big.Int).Exp(g, aPower, p)
 		gamma.Mul(gamma, a)
 		gamma.Mod(gamma, p)
 
-		fmt.Printf("gamma=%d\n", gamma)
-
-		fmt.Printf("j=%d\n", j)
-		fmt.Printf("q=%d\n", q)
-		fmt.Printf("n=%d\n", n)
 		hh := new(big.Int).Exp(q, new(big.Int).Add(j, Big1), nil)
-		fmt.Printf("q^(j+1)=%d\n", hh)
 		betaPower := new(big.Int).Div(n, hh)
-		fmt.Printf("betaPower=%d\n", betaPower)
 		beta := new(big.Int).ModInverse(gamma, p)
 		beta.Mul(beta, y)
 		beta.Exp(beta, betaPower, p)
 
-		fmt.Printf("beta=%d\n", beta)
-		fmt.Printf("alpha=%d\n", a1)
-
 		l, _ = bsgs(a1, beta, p)
-
 		l.Mod(l, pf)
-		fmt.Printf("l=%d\n", l)
+
 		dx := new(big.Int).Exp(pf, j, nil)
 		dx.Mul(dx, l)
 		x.Add(x, dx)
 	}
 	hhh := x.Mod(x, n)
-	fmt.Printf("BPH: found x - %d\n\n\n", hhh)
 	return hhh
 }
 
@@ -168,7 +152,6 @@ func pohligHellman(g, y, p *big.Int) *big.Int {
 		pf := factors[i].fact
 		ef := new(big.Int).SetInt64(factors[i].exp)
 		xx := basicPohligHellman(g, y, n, p, pf, ef)
-		fmt.Printf("Raund %d: p=%d , e=%d, found x=%d\n", i, pf, ef, xx)
 		A = append(A, xx)
 		N = append(N, new(big.Int).Exp(pf, ef, nil))
 	}
@@ -177,9 +160,5 @@ func pohligHellman(g, y, p *big.Int) *big.Int {
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println(A)
-	fmt.Println(N)
-	fmt.Println(x)
 	return x
 }
