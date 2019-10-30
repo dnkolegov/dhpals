@@ -66,6 +66,7 @@ func (g GroupParams) GenerateKey(rng io.Reader) (DHKey, error) {
 }
 
 func (g GroupParams) DH(private, public *big.Int) (*big.Int, error) {
+	panic("not implemented")
 	return nil, nil
 }
 
