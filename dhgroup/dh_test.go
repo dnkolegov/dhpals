@@ -1,6 +1,7 @@
 package dhgroup
 
 import (
+	"bytes"
 	"testing"
 )
 
@@ -18,6 +19,10 @@ func TestDH(t *testing.T) {
 		b, err := g.GenerateKey(nil)
 		if err != nil {
 			t.Errorf("%s: Bob key generation failed for %s", t.Name(), g.DHName())
+		}
+
+		if bytes.Equal(b.Private.Bytes(), a.Private.Bytes()) || bytes.Equal(b.Public.Bytes(), a.Public.Bytes()) {
+			t.Errorf("%s: Alice and Bob keys are the same for %s", t.Name(), g.DHName())
 		}
 
 		// Alice computes a shared key.
