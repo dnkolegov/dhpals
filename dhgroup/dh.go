@@ -58,7 +58,7 @@ func (g *GroupParams) DHParams() *GroupParams {
 }
 
 func (g GroupParams) GenerateKey(rng io.Reader) (DHKey, error) {
-
+	panic("Not implemented")
 	return DHKey{
 		Private: nil,
 		Public:  nil,
@@ -104,7 +104,7 @@ func initMODP768() {
 		"EF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245" +
 		"E485B576625E7EC6F44C42E9A63A3620FFFFFFFFFFFFFFFF")
 	modp768.G = big.NewInt(2)
-	modp768.Q = nil
+	modp768.Q = new(big.Int).Sub(modp768.P, big.NewInt(1))
 	modp768.BitSize = 768
 }
 
@@ -120,7 +120,7 @@ func initMODP1536() {
 		"bb9ed529077096966d670c354e4abc9804f1746c08ca237327fff" +
 		"fffffffffffff")
 	modp1536.G = big.NewInt(2)
-	modp1536.Q = nil
+	modp1536.Q = new(big.Int).Sub(modp1536.P, big.NewInt(1))
 	modp1536.BitSize = 1536
 }
 
@@ -138,7 +138,7 @@ func initMODP2048() {
 		"DE2BCBF6955817183995497CEA956AE515D2261898FA0510" +
 		"15728E5A8AACAA68FFFFFFFFFFFFFFFF")
 	modp2048.G = big.NewInt(2)
-	modp2048.Q = nil
+	modp2048.Q = new(big.Int).Sub(modp2048.P, big.NewInt(1))
 	modp2048.BitSize = 2048
 }
 

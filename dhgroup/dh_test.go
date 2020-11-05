@@ -2,6 +2,7 @@ package dhgroup
 
 import (
 	"bytes"
+	"crypto/rand"
 	"testing"
 )
 
@@ -10,13 +11,13 @@ func TestDH(t *testing.T) {
 		g, _ := GroupForGroupID(v)
 
 		// Alice generates a key pair.
-		a, err := g.GenerateKey(nil)
+		a, err := g.GenerateKey(rand.Reader)
 		if err != nil {
 			t.Errorf("%s: Alice key generation failed for %s", t.Name(), g.DHName())
 		}
 
 		// Bog generates a key pair.
-		b, err := g.GenerateKey(nil)
+		b, err := g.GenerateKey(rand.Reader)
 		if err != nil {
 			t.Errorf("%s: Bob key generation failed for %s", t.Name(), g.DHName())
 		}

@@ -42,7 +42,7 @@ func (curve *CurveParams) Params() *CurveParams {
 }
 
 func (curve *CurveParams) IsOnCurve(x, y *big.Int) bool {
-	// y^2 = x^3 - a*x + b
+	// y^2 = x^3 + a*x + b
 	panic("not implemented")
 	return false
 }
@@ -176,7 +176,7 @@ func initP256() {
 	p256.P, _ = new(big.Int).SetString("115792089210356248762697446949407573530086143415290314195533631308867097853951", 10)
 	p256.N, _ = new(big.Int).SetString("115792089210356248762697446949407573529996955224135760342422259061068512044369", 10)
 	p256.B, _ = new(big.Int).SetString("5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b", 16)
-	p256.A, _ = new(big.Int).SetString("3", 10)
+	p256.A, _ = new(big.Int).SetString("-3", 10)
 	p256.Gx, _ = new(big.Int).SetString("6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296", 16)
 	p256.Gy, _ = new(big.Int).SetString("4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5", 16)
 	p256.BitSize = 127
@@ -188,7 +188,7 @@ func initP224() {
 	p224.P, _ = new(big.Int).SetString("26959946667150639794667015087019630673557916260026308143510066298881", 10)
 	p224.N, _ = new(big.Int).SetString("26959946667150639794667015087019625940457807714424391721682722368061", 10)
 	p224.B, _ = new(big.Int).SetString("b4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4", 16)
-	p224.A, _ = new(big.Int).SetString("3", 10)
+	p224.A, _ = new(big.Int).SetString("-3", 10)
 	p224.Gx, _ = new(big.Int).SetString("b70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21", 16)
 	p224.Gy, _ = new(big.Int).SetString("bd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34", 16)
 	p224.BitSize = 224
@@ -198,7 +198,7 @@ func initP4() {
 	p4 = &CurveParams{Name: "P-4"}
 	p4.P, _ = new(big.Int).SetString("11", 10)
 	p4.B, _ = new(big.Int).SetString("1", 10)
-	p4.A, _ = new(big.Int).SetString("3", 10)
+	p4.A, _ = new(big.Int).SetString("-3", 10)
 	p4.BitSize = 4
 }
 
@@ -207,7 +207,7 @@ func initP128() {
 	p128.P, _ = new(big.Int).SetString("233970423115425145524320034830162017933", 10)
 	p128.N, _ = new(big.Int).SetString("29246302889428143187362802287225875743", 10)
 	p128.B, _ = new(big.Int).SetString("11279326", 10)
-	p128.A, _ = new(big.Int).SetString("95051", 10)
+	p128.A, _ = new(big.Int).SetString("-95051", 10)
 	p128.Gx, _ = new(big.Int).SetString("182", 10)
 	p128.Gy, _ = new(big.Int).SetString("85518893674295321206118380980485522083", 10)
 	p128.BitSize = 128
@@ -218,7 +218,7 @@ func initP128V1() {
 	p128v1.P, _ = new(big.Int).SetString("233970423115425145524320034830162017933", 10)
 	p128v1.N, _ = new(big.Int).SetString("233970423115425145550826547352470124412", 10)
 	p128v1.B, _ = new(big.Int).SetString("210", 10)
-	p128v1.A, _ = new(big.Int).SetString("95051", 10)
+	p128v1.A, _ = new(big.Int).SetString("-95051", 10)
 	p128v1.Gx, _ = new(big.Int).SetString("182", 10)
 	p128v1.Gy, _ = new(big.Int).SetString("85518893674295321206118380980485522083", 10)
 	p128v1.BitSize = 128
@@ -229,7 +229,7 @@ func initP128V2() {
 	p128v2.P, _ = new(big.Int).SetString("233970423115425145524320034830162017933", 10)
 	p128v2.N, _ = new(big.Int).SetString("233970423115425145544350131142039591210", 10)
 	p128v2.B, _ = new(big.Int).SetString("504", 10)
-	p128v2.A, _ = new(big.Int).SetString("95051", 10)
+	p128v2.A, _ = new(big.Int).SetString("-95051", 10)
 	p128v2.Gx, _ = new(big.Int).SetString("182", 10)
 	p128v2.Gy, _ = new(big.Int).SetString("85518893674295321206118380980485522083", 10)
 	p128v2.BitSize = 128
@@ -240,7 +240,7 @@ func initP128V3() {
 	p128v3.P, _ = new(big.Int).SetString("233970423115425145524320034830162017933", 10)
 	p128v3.N, _ = new(big.Int).SetString("233970423115425145545378039958152057148", 10)
 	p128v3.B, _ = new(big.Int).SetString("727", 10)
-	p128v3.A, _ = new(big.Int).SetString("95051", 10)
+	p128v3.A, _ = new(big.Int).SetString("-95051", 10)
 	p128v3.Gx, _ = new(big.Int).SetString("182", 10)
 	p128v3.Gy, _ = new(big.Int).SetString("85518893674295321206118380980485522083", 10)
 	p128v3.BitSize = 128
@@ -251,7 +251,7 @@ func initP48() {
 	p48.P, _ = new(big.Int).SetString("146150163733117", 10)
 	p48.N, _ = new(big.Int).SetString("146150168402890", 10)
 	p48.B, _ = new(big.Int).SetString("1242422", 10)
-	p48.A = new(big.Int).Sub(p48.P, big.NewInt(544333))
+	p48.A, _ = new(big.Int).SetString("544333", 10 )
 	p48.Gx, _ = new(big.Int).SetString("27249639878388", 10)
 	p48.Gy, _ = new(big.Int).SetString("14987583413657", 10)
 	p48.BitSize = 48
