@@ -5,6 +5,7 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/hmac"
+	"crypto/rand"
 	"crypto/sha256"
 	"errors"
 	"fmt"
@@ -33,7 +34,7 @@ func newDHOracle(id dhgroup.ID) (
 
 	var dhGroup, _ = dhgroup.GroupForGroupID(id)
 
-	dhKey, _ := dhGroup.GenerateKey(nil)
+	dhKey, _ := dhGroup.GenerateKey(rand.Reader)
 
 	dh = func(publicKey *big.Int) []byte {
 		sharedKey, err := dhGroup.DH(dhKey.Private, publicKey)
@@ -125,7 +126,7 @@ func newToxOracle(id dhgroup.ID) (
 	getPrivate func() []byte,
 ) {
 	var dhGroup, _ = dhgroup.GroupForGroupID(id)
-	static, _ := dhGroup.GenerateKey(nil)
+	static, _ := dhGroup.GenerateKey(rand.Reader)
 	var key []byte
 
 	pubKeys := make(map[string][]byte)
@@ -156,7 +157,7 @@ func newToxOracle(id dhgroup.ID) (
 
 		peerPublicEphemeral := kem.Decap(static.Private, new(big.Int).SetBytes(peerPublicStatic), payload)
 
-		ephemeral, _ := dhGroup.GenerateKey(nil)
+		ephemeral, _ := dhGroup.GenerateKey(rand.Reader)
 		ct := kem.Encap(static.Private, new(big.Int).SetBytes(peerPublicStatic), ephemeral.Public.Bytes())
 
 		key = new(big.Int).Exp(new(big.Int).SetBytes(peerPublicEphemeral), ephemeral.Private, dhGroup.DHParams().P).Bytes()

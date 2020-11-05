@@ -1,6 +1,7 @@
 package dhpals
 
 import (
+	"crypto/rand"
 	"fmt"
 	"math/big"
 
@@ -9,8 +10,8 @@ import (
 
 func runKCIAttack() ([]byte, error) {
 	var dhGroup, _ = dhgroup.GroupForGroupID(dhgroup.ModP2048)
-	static, _ := dhGroup.GenerateKey(nil)
-	ephemeral, _ := dhGroup.GenerateKey(nil)
+	static, _ := dhGroup.GenerateKey(rand.Reader)
+	ephemeral, _ := dhGroup.GenerateKey(rand.Reader)
 
 	kem := dhkemScheme{group: dhGroup}
 
