@@ -8,7 +8,7 @@ import (
 	"sync"
 )
 
-// A Curve represents a short-form Weierstrass curve y^2 = x^3 - a*x + b.
+// A Curve represents a short-form Weierstrass curve y^2 = x^3 + a*x + b.
 type Curve interface {
 	// Params returns the parameters for the curve.
 	Params() *CurveParams
@@ -99,20 +99,26 @@ func Inverse(curve Curve, x, y *big.Int) (ix *big.Int, iy *big.Int) {
 }
 
 func GeneratePoint(curve Curve) (*big.Int, *big.Int) {
-	x, err := rand.Int(rand.Reader, curve.Params().P)
-	if err != nil {
-		panic(err)
+	for {
+		x, err := rand.Int(rand.Reader, curve.Params().P)
+
+		if err != nil {
+			panic(err)
+		}
+
+		x3 := new(big.Int).Mul(x, x)
+		x3.Mul(x3, x)
+
+		ax := new(big.Int).Mul(curve.Params().A, x)
+		x3.Add(x3, ax)
+		x3.Add(x3, curve.Params().B)
+		x3.Mod(x3, curve.Params().P)
+
+		y := new(big.Int).ModSqrt(x3, curve.Params().P)
+		if y != nil {
+			return x, y
+		}
 	}
-
-	x3 := new(big.Int).Mul(x, x)
-	x3.Mul(x3, x)
-
-	ax := new(big.Int).Mul(curve.Params().A, x)
-	x3.Sub(x3, ax)
-	x3.Add(x3, curve.Params().B)
-	x3.Mod(x3, curve.Params().P)
-
-	return x, new(big.Int).ModSqrt(x3, curve.Params().P)
 }
 
 // Marshal converts a point into the uncompressed form specified in section 4.3.6 of ANSI X9.62.
