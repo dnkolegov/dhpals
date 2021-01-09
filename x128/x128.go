@@ -1,4 +1,4 @@
-// Package x128 implements the insecure Montgomery curve x128 defined in the Cryptopals challange 59.
+// Package x128 implements the insecure Montgomery curve x128 defined in the Cryptopals challenge 60.
 package x128
 
 import (
