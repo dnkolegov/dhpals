@@ -35,7 +35,7 @@ func findAllPointsOfPrimeOrderOnX128() (points []twistPoint) {
 	return
 }
 
-// catchKangarooOnMontgomeryCurve implements Pollard's kangaroo algorithm on a curve.
+// catchKangarooOnCurve implements Pollard's kangaroo algorithm on a curve.
 func catchKangarooOnCurve(curve elliptic.Curve, bx, by, x, y, a, b *big.Int) (m *big.Int, err error) {
 	// k is calculated based on a formula in this paper: https://arxiv.org/pdf/0812.0789.pdf
 	panic("not implemented")
